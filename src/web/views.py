@@ -10,6 +10,28 @@ from django.db.models import Case, When
 from .recommendation import Myrecommend
 import numpy as np 
 import pandas as pd
+import requests
+
+TMDB_API_KEY = "06f97044c95338c4838062253ff20577"
+def fetch_movie_availability(movie_id):
+    """Fetch movie streaming availability using TMDB JustWatch API"""
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}/watch/providers?api_key=06f97044c95338c4838062253ff20577"
+    
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        if "results" in data:
+            providers = data["results"].get("IN", {}).get("flatrate", [])  # Change "IN" for other countries
+            if providers:
+                return ", ".join(provider["provider_name"] for provider in providers)
+    
+    return "Currently Unavailable"
+
+def update_movie_availability():
+    movies = Movie.objects.all()
+    for movie in movies:
+        movie.availability = fetch_movie_availability(movie.tmdb_id)  # Store TMDB ID in Movie model
+        movie.save()
 
 
 # for recommendation

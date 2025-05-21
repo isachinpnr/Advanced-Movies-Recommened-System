@@ -3,12 +3,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 class Movie(models.Model):
-	title   	= models.CharField(max_length=200)
+	title   	= models.CharField(max_length=255)
 	genre  		= models.CharField(max_length=100)
 	movie_logo  = models.FileField() 
+	year        = models.IntegerField()
+	availability = models.TextField(blank=True , null=True)
 
 	def __str__(self):
-		return self.title
+		return {self.title} 
 
 class Myrating(models.Model):
 	user   	= models.ForeignKey(User,on_delete=models.CASCADE) 

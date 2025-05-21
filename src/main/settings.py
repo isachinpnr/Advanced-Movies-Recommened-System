@@ -1,3 +1,14 @@
+# settings.py
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
+
+# Use variables
+DEBUG = os.getenv('DEBUG') == 'True'
+SECRET_KEY = os.getenv('SECRET_KEY')
+TMDB_API_KEY = os.getenv('06f97044c95338c4838062253ff20577')
 """
 Django settings for main project.
 
@@ -26,7 +37,7 @@ SECRET_KEY = '5u$a%1-m#+jh4k^pb%*ut#24zhwxdv@)ks3=tg7sz9&7)&dr^j'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+ 
 
 # Application definition
 

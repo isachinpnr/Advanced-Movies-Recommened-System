@@ -1,3 +1,9 @@
+# Author - Sachin Panwar
+# Contact - Uttarakhandtechnology@gmail.com 
+# X - iSachin_Panwar
+
+Note - This Project is a Developing Phase , so if anyone read this README file so if you want to contribute you can make a pull request in here , and some suggestion you can contact me direct my x handle.....
+
 # Movie-Recommender-System
 A Web Base user-item Movie Recommendation Engine using Collaborative Filtering By matrix factorizations algorithm and
 The recommendation based on the underlying idea that is if two persons both liked certian common movies,then the movies that one person has liked that the other person has not yet watched can be recommended to him.   
